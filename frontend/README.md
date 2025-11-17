@@ -1,137 +1,169 @@
-# Estructura del Proyecto `proyectoLanding`
+# FrancoMat - Landing Page del Proyecto
 
-Este documento describe la estructura de directorios del proyecto `proyectoLanding` a la fecha 14 de noviembre de 2025.
+Este proyecto es una aplicación web de una sola página (SPA) desarrollada con Angular, diseñada como la página de presentación para la constructora "FrancoMat". La interfaz es moderna, responsive y está construida para ser fácilmente personalizable.
 
-```
-C:\Users\PABLO\Desktop\landingGeneral\
-└───frontend\
-    └───proyectoLanding\
-        ├───.editorconfig
-        ├───.gitignore
-        ├───angular.json
-        ├───GEMINI.md
-        ├───package-lock.json
-        ├───package.json
-        ├───tailwind.config.js
-        ├───tsconfig.app.json
-        ├───tsconfig.json
-        ├───tsconfig.spec.json
-        ├───.angular\
-        │   └───cache...\
-        ├───.git...\
-        ├───.vscode\
-        │   ├───extensions.json
-        │   ├───launch.json
-        │   └───tasks.json
-        ├───dist...\
-        ├───node_modules...\
-        ├───public\
-        │   └───favicon.ico
-        └───src\
-            ├───index.html
-            ├───main.ts
-            ├───styles.css
-            └───app\
-                ├───app.config.ts
-                ├───app.css
-                ├───app.html
-                ├───app.routes.ts
-                ├───app.spec.ts
-                ├───app.ts
-                └───landing\
-                    ├───landing.css
-                    ├───landing.html
-                    ├───landing.spec.ts
-                    ├───landing.ts
-                    ├───about\
-                    │   ├───about.css
-                    │   ├───about.html
-                    │   ├───about.spec.ts
-                    │   └───about.ts
-                    ├───contact\
-                    │   ├───contact.css
-                    │   ├───contact.html
-                    │   ├───contact.spec.ts
-                    │   └───contact.ts
-                    ├───footer\
-                    │   ├───footer.css
-                    │   ├───footer.html
-                    │   ├───footer.spec.ts
-                    │   └───footer.ts
-                    ├───header\
-                    │   ├───header.css
-                    │   ├───header.html
-                    │   ├───header.spec.ts
-                    │   └───header.ts
-                    ├───hero\
-                    │   ├───hero.css
-                    │   ├───hero.html
-                    │   ├───hero.spec.ts
-                    │   └───hero.ts
-                    ├───my-projects\
-                    │   ├───my-projects.css
-                    │   ├───my-projects.html
-                    │   ├───my-projects.spec.ts
-                    │   └───my-projects.ts
-                    ├───my-services\
-                    │   ├───my-services.css
-                    │   ├───my-services.html
-                    │   ├───my-services.spec.ts
-                    │   └───my-services.ts
-                    └───testimonials\
-                        ├───testimonials.css
-                        ├───testimonials.html
-                        ├───testimonials.spec.ts
-                        └───testimonials.ts
+## ✨ Características
+
+-   **Diseño Moderno y Responsive:** Totalmente adaptable a dispositivos móviles, tabletas y computadoras de escritorio.
+-   **Componentes Modulares:** Estructura organizada en componentes de Angular para cada sección de la página (Inicio, Servicios, Proyectos, etc.).
+-   **Estilizado con Tailwind CSS:** Utilidad de clases de CSS para un desarrollo rápido y un diseño consistente.
+-   **Navegación Fluida:** Desplazamiento suave (`smooth scroll`) entre las diferentes secciones de la página.
+-   **Preparado para Backend:** Estructura lista para integrar servicios y consumir una API REST para funcionalidades dinámicas (ej. formulario de contacto).
+
+## 🚀 Tecnologías Utilizadas
+
+-   **Angular (v17+):** Framework principal para la construcción de la interfaz de usuario.
+-   **TypeScript:** Lenguaje de programación principal.
+-   **Tailwind CSS:** Framework de CSS para el diseño y estilizado.
+-   **Node.js y npm:** Entorno de ejecución y gestión de paquetes para el desarrollo.
+
+## 🛠️ Guía de Desarrollo
+
+Sigue estos pasos para levantar el proyecto en un entorno de desarrollo local.
+
+### Prerrequisitos
+
+-   Tener instalado [Node.js](https://nodejs.org/) (que incluye npm). Se recomienda la versión LTS.
+-   Tener instalado el [Angular CLI](https://angular.io/cli) de forma global:
+    ```bash
+    npm install -g @angular/cli
+    ```
+
+### Instalación
+
+1.  Clona el repositorio (o asegúrate de estar en el directorio `frontend`).
+2.  Instala las dependencias del proyecto:
+    ```bash
+    npm install
+    ```
+
+### Servidor de Desarrollo
+
+Ejecuta el siguiente comando para iniciar el servidor de desarrollo de Angular:
+
+```bash
+ng serve
 ```
 
-## Descripción General
+Navega a `http://localhost:4200/`. La aplicación se recargará automáticamente si cambias alguno de los archivos fuente.
 
-El proyecto `proyectoLanding` es una aplicación web desarrollada con Angular. La estructura sigue las convenciones estándar de Angular, con un enfoque modular para los componentes de la página de aterrizaje (`landing`).
+## 🔗 Conexión con un Backend Real
 
-### Directorios Principales
+Para que funcionalidades como el formulario de contacto funcionen, necesitas conectar la aplicación a un backend que pueda procesar las solicitudes.
 
--   `.angular/`: Contiene archivos de caché y configuración interna de Angular.
--   `.git/`: Repositorio Git local.
--   `.vscode/`: Configuraciones específicas para Visual Studio Code.
--   `dist/`: Directorio de salida para los archivos de construcción de la aplicación.
--   `node_modules/`: Dependencias del proyecto instaladas por npm.
--   `public/`: Contiene activos estáticos como `favicon.ico`.
--   `src/`: Contiene el código fuente de la aplicación.
+### 1. Configurar la URL de la API
 
-### `src/`
+La mejor práctica es gestionar las URLs de la API a través de los archivos de entorno de Angular.
 
-Dentro de `src/`, la estructura es la siguiente:
+-   **Para desarrollo:** `src/environments/environment.ts`
+-   **Para producción:** `src/environments/environment.prod.ts`
 
--   `index.html`: El archivo HTML principal de la aplicación.
--   `main.ts`: El punto de entrada principal de la aplicación Angular.
--   `styles.css`: Estilos globales de la aplicación.
--   `app/`: Contiene los componentes y la lógica principal de la aplicación.
-    -   `app.config.ts`: Configuración de la aplicación.
-    -   `app.css`: Estilos específicos del componente raíz de la aplicación.
-    -   `app.html`: Plantilla HTML del componente raíz de la aplicación.
-    -   `app.routes.ts`: Definición de las rutas de la aplicación.
-    -   `app.spec.ts`: Archivo de pruebas para el componente raíz.
-    -   `app.ts`: Lógica del componente raíz de la aplicación.
-    -   `landing/`: Este directorio contiene los componentes específicos que conforman la página de aterrizaje. Cada subdirectorio representa una sección de la landing page.
-        -   `about/`: Componente para la sección "Acerca de".
-        -   `contact/`: Componente para la sección de "Contacto".
-        -   `footer/`: Componente para el pie de página.
-        -   `header/`: Componente para el encabezado.
-        -   `hero/`: Componente para la sección principal (hero).
-        -   `my-projects/`: Componente para la sección de "Mis Proyectos".
-        -   `my-services/`: Componente para la sección de "Mis Servicios".
-        -   `testimonials/`: Componente para la sección de "Testimonios".
+Añade una propiedad `apiUrl` en ambos archivos:
 
-Cada componente dentro de `landing/` sigue un patrón consistente, incluyendo archivos `.css` para estilos, `.html` para la plantilla, `.spec.ts` para pruebas y `.ts` para la lógica del componente.
+```typescript
+// En src/environments/environment.ts
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:3000/api' // URL de tu backend de desarrollo
+};
 
-## Archivos de Configuración
+// En src/environments/environment.prod.ts
+export const environment = {
+  production: true,
+  apiUrl: 'https://api.francomat.com' // URL de tu backend de producción
+};
+```
 
--   `.editorconfig`: Configuración para editores de código.
--   `.gitignore`: Archivo para ignorar archivos y directorios en Git.
--   `angular.json`: Archivo de configuración principal de Angular CLI.
--   `GEMINI.md`: Documento específico para el agente Gemini.
--   `package-lock.json`: Registra las versiones exactas de las dependencias.
--   `package.json`: Define las dependencias del proyecto y scripts.
--   `tailwind.config.js`: Configuración de Tailwind CSS.
--   `tsconfig.app.json`, `tsconfig.json`, `tsconfig.spec.json`: Archivos de configuración de TypeScript para diferentes entornos (aplicación, general, pruebas).
+### 2. Crear un Servicio para las Peticiones HTTP
+
+Centraliza todas las llamadas a la API en un servicio de Angular.
+
+1.  **Genera el servicio** con Angular CLI:
+    ```bash
+    ng generate service services/api
+    ```
+
+2.  **Configura el servicio** para usar `HttpClient` y la URL del entorno. Asegúrate de tener `provideHttpClient()` en tu `app.config.ts`.
+
+    ```typescript
+    // En src/app/services/api.service.ts
+    import { Injectable } from '@angular/core';
+    import { HttpClient } from '@angular/common/http';
+    import { Observable } from 'rxjs';
+    import { environment } from '../../environments/environment';
+
+    @Injectable({
+      providedIn: 'root'
+    })
+    export class ApiService {
+      private apiUrl = environment.apiUrl;
+
+      constructor(private http: HttpClient) { }
+
+      // Ejemplo para enviar datos de un formulario de contacto
+      enviarContacto(datos: any): Observable<any> {
+        return this.http.post(`${this.apiUrl}/contact`, datos);
+      }
+
+      // Puedes añadir más métodos para otros endpoints
+      // obtenerProyectos(): Observable<any> {
+      //   return this.http.get(`${this.apiUrl}/projects`);
+      // }
+    }
+    ```
+
+### 3. Usar el Servicio en un Componente
+
+Inyecta el `ApiService` en el componente que necesite comunicarse con el backend (por ejemplo, el formulario de contacto).
+
+```typescript
+// En src/app/landing/contact/contact.ts
+
+import { Component } from '@angular/core';
+import { ApiService } from '../../services/api.service'; // Asegúrate de que la ruta sea correcta
+// Importa también ReactiveFormsModule si usas formularios reactivos
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+@Component({
+  selector: 'app-contact',
+  // ...
+})
+export class Contact {
+  contactForm: FormGroup;
+  enviando = false;
+  mensajeExito = '';
+
+  constructor(private fb: FormBuilder, private apiService: ApiService) {
+    this.contactForm = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      message: ['', Validators.required]
+    });
+  }
+
+  onSubmit() {
+    if (this.contactForm.invalid) {
+      return;
+    }
+
+    this.enviando = true;
+    this.mensajeExito = '';
+
+    this.apiService.enviarContacto(this.contactForm.value).subscribe({
+      next: (respuesta) => {
+        console.log('Mensaje enviado con éxito', respuesta);
+        this.mensajeExito = '¡Gracias por tu mensaje! Te contactaremos pronto.';
+        this.contactForm.reset();
+        this.enviando = false;
+      },
+      error: (error) => {
+        console.error('Error al enviar el mensaje', error);
+        // Aquí podrías mostrar un mensaje de error al usuario
+        this.enviando = false;
+      }
+    });
+  }
+}
+```
+
+Con estos pasos, tu frontend estará listo para comunicarse con cualquier backend que exponga una API REST.

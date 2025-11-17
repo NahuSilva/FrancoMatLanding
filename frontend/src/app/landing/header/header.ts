@@ -32,26 +32,41 @@ export class Header implements AfterViewInit {
     @HostListener('window:scroll', [])
     onWindowScroll() {
         const scrollPosition = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
-
-        // Define un umbral (por ejemplo, 50px) para cambiar el color
         const scrollThreshold = 50;
-
-        // Actualiza la propiedad isScrolled
         this.isScrolled = scrollPosition > scrollThreshold;
 
-        // Obtener la etiqueta header
         const headerElement = this.el.nativeElement.querySelector('header');
+        const navLinks = this.el.nativeElement.querySelectorAll('nav.hidden.lg\\:flex a');
+        const mobileMenuButton = this.el.nativeElement.querySelector('#mobile-menu-button');
 
-        // Aplicar/remover clases con Renderer2
         if (headerElement) {
             if (this.isScrolled) {
-                // Si hay scroll, queremos el fondo sólido (bg-black en este caso)
-                this.renderer.removeClass(headerElement, 'lg:bg-transparent');
-                this.renderer.addClass(headerElement, 'lg:bg-black'); // Clase sólida
+                this.renderer.removeClass(headerElement, 'bg-transparent');
+                this.renderer.addClass(headerElement, 'bg-white');
+
+                navLinks.forEach((link: HTMLElement) => {
+                    this.renderer.removeClass(link, 'text-white');
+                    this.renderer.addClass(link, 'text-black');
+                });
+
+                if (mobileMenuButton) {
+                    this.renderer.removeClass(mobileMenuButton, 'text-white');
+                    this.renderer.addClass(mobileMenuButton, 'text-black');
+                }
+
             } else {
-                // Si no hay scroll, queremos el fondo transparente
-                this.renderer.removeClass(headerElement, 'lg:bg-black'); // Remover clase sólida
-                this.renderer.addClass(headerElement, 'lg:bg-transparent');
+                this.renderer.removeClass(headerElement, 'bg-white');
+                this.renderer.addClass(headerElement, 'bg-transparent');
+
+                navLinks.forEach((link: HTMLElement) => {
+                    this.renderer.removeClass(link, 'text-black');
+                    this.renderer.addClass(link, 'text-white');
+                });
+
+                if (mobileMenuButton) {
+                    this.renderer.removeClass(mobileMenuButton, 'text-black');
+                    this.renderer.addClass(mobileMenuButton, 'text-white');
+                }
             }
         }
     }
